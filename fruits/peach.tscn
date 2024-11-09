@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmg5trdxthsl2"]
+
+[ext_resource type="Texture2D" uid="uid://cwu4oc7pg8edg" path="res://assets/sprites/peach.png" id="1_obm1a"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ul0qr"]
+radius = 31.0
+height = 68.0
+
+[node name="peach" type="CollisionShape2D"]
+shape = SubResource("CapsuleShape2D_ul0qr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.09, 0.085)
+texture = ExtResource("1_obm1a")

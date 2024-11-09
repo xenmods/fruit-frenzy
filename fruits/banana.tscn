@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8v2hwjyxj883"]
+
+[ext_resource type="Texture2D" uid="uid://culf1yut7muok" path="res://assets/sprites/banana.png" id="1_u71fm"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oi3nu"]
+radius = 40.0
+height = 90.0
+
+[node name="banana" type="CollisionShape2D"]
+shape = SubResource("CapsuleShape2D_oi3nu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.09, 0.085)
+texture = ExtResource("1_u71fm")

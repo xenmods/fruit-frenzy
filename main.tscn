@@ -1,0 +1,57 @@
+[gd_scene load_steps=11 format=3 uid="uid://blrdtwx5rk0h7"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_s6xft"]
+[ext_resource type="PackedScene" uid="uid://ynwqm2ccqymp" path="res://fruit.tscn" id="2_sr75p"]
+[ext_resource type="PackedScene" uid="uid://duuhv87y84kxh" path="res://HUD.tscn" id="3_slrqd"]
+[ext_resource type="PackedScene" uid="uid://d15s2a507sd0y" path="res://basket.tscn" id="3_vfgp3"]
+[ext_resource type="PackedScene" uid="uid://bboan1v3q52e7" path="res://borders.tscn" id="4_2447p"]
+[ext_resource type="PackedScene" uid="uid://bfa15jq15y46y" path="res://ground.tscn" id="4_ym20w"]
+[ext_resource type="AudioStream" uid="uid://dgthrum5lta10" path="res://assets/sounds/bgm.ogg" id="6_phl1h"]
+[ext_resource type="AudioStream" uid="uid://cvlo7ox0o3q1o" path="res://assets/sounds/menu.ogg" id="7_06to7"]
+[ext_resource type="AudioStream" uid="uid://qq7btcm5ko26" path="res://assets/sounds/gameover.wav" id="7_te1kn"]
+
+[sub_resource type="Curve2D" id="Curve2D_0w6q6"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 83, -1, 0, 0, 0, 0, 142, -4, 0, 0, 0, 0, 208, -3, 0, 0, 0, 0, 281, -1, 0, 0, 0, 0, 351, -4, 0, 0, 0, 0, 43, -3, 0, 0, 0, 0, 384, -2, 0, 0, 0, 0, 409, -3, 0, 0, 0, 0, 170, -4, 0, 0, 0, 0, 316, -4, 0, 0, 0, 0, 83, -1)
+}
+point_count = 11
+
+[node name="Main" type="Node"]
+script = ExtResource("1_s6xft")
+fruit_scene = ExtResource("2_sr75p")
+
+[node name="HUD" parent="." instance=ExtResource("3_slrqd")]
+
+[node name="FruitPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_0w6q6")
+
+[node name="FruitSpawnLocation" type="PathFollow2D" parent="FruitPath"]
+position = Vector2(83, -1)
+rotation = -0.0508037
+
+[node name="Basket" parent="." instance=ExtResource("3_vfgp3")]
+
+[node name="FruitTimer" type="Timer" parent="."]
+
+[node name="Ground" parent="." instance=ExtResource("4_ym20w")]
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_phl1h")
+parameters/looping = true
+
+[node name="MenuMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_06to7")
+parameters/looping = true
+
+[node name="GameOver" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_te1kn")
+
+[node name="StartPosition" type="Marker2D" parent="."]
+position = Vector2(240, 550)
+
+[node name="Borders" parent="." instance=ExtResource("4_2447p")]
+
+[connection signal="start_game" from="HUD" to="." method="start_game"]
+[connection signal="catched" from="Basket" to="." method="_on_basket_catched"]
+[connection signal="timeout" from="FruitTimer" to="." method="_on_fruit_timer_timeout"]
+[connection signal="body_entered" from="Ground" to="." method="_on_ground_body_entered"]

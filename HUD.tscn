@@ -1,0 +1,125 @@
+[gd_scene load_steps=7 format=3 uid="uid://duuhv87y84kxh"]
+
+[ext_resource type="Script" path="res://hud.gd" id="1_fgmn1"]
+[ext_resource type="FontFile" uid="uid://dn4j4vlh00a3j" path="res://assets/fonts/SamuraiBlast-YznGj.ttf" id="1_uj1me"]
+[ext_resource type="Texture2D" uid="uid://de0yj3e8vdirq" path="res://assets/sprites/Clouds/Clouds 2/1.png" id="2_pjllk"]
+[ext_resource type="Texture2D" uid="uid://el28au8qmlfw" path="res://assets/sprites/Clouds/Clouds 2/3.png" id="3_5e302"]
+[ext_resource type="Texture2D" uid="uid://buwqtnwu227uv" path="res://assets/sprites/Default@2x.png" id="5_upcuk"]
+[ext_resource type="Texture2D" uid="uid://r1fa8i40xkmt" path="res://assets/sprites/Hover@2x.png" id="6_wjwb2"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fgmn1")
+
+[node name="Backdrop" type="Sprite2D" parent="."]
+position = Vector2(245, 321)
+scale = Vector2(1, 1.98148)
+texture = ExtResource("2_pjllk")
+
+[node name="3" type="Sprite2D" parent="."]
+position = Vector2(247, 486)
+texture = ExtResource("3_5e302")
+
+[node name="Score" type="Label" parent="."]
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -137.0
+offset_right = -4.0
+offset_bottom = 33.0
+grow_horizontal = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_uj1me")
+theme_override_font_sizes/font_size = 24
+text = "Catched: 0
+Missed: 0"
+horizontal_alignment = 2
+
+[node name="Message" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -187.0
+offset_top = -35.5
+offset_right = 187.0
+offset_bottom = 35.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_uj1me")
+theme_override_font_sizes/font_size = 32
+text = "Catch the fruits! You lose on 5 misses."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="MessageTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="StartButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -77.0
+offset_top = -169.0
+offset_right = 243.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("5_upcuk")
+texture_pressed = ExtResource("6_wjwb2")
+texture_hover = ExtResource("6_wjwb2")
+
+[node name="GameTitle" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -214.5
+offset_top = 58.0
+offset_right = 214.5
+offset_bottom = 134.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.713726, 0.733333, 0.482353, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_uj1me")
+theme_override_font_sizes/font_size = 64
+text = "Fruit FRENZY"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Author" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -214.5
+offset_top = 99.0
+offset_right = 214.5
+offset_bottom = 175.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_uj1me")
+theme_override_font_sizes/font_size = 24
+text = "By Xen"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="timeout" from="MessageTimer" to="." method="_on_message_timer_timeout"]
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhkn1d3fx3yd0"]
+
+[ext_resource type="Texture2D" uid="uid://d1wuqekfrf5jb" path="res://assets/sprites/lemon.png" id="1_anrlx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e243n"]
+size = Vector2(79, 50)
+
+[node name="lemon" type="CollisionShape2D"]
+position = Vector2(29.5, 15)
+shape = SubResource("RectangleShape2D_e243n")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.09, 0.085)
+texture = ExtResource("1_anrlx")

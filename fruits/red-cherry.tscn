@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dfpkh6rsrxssa"]
+
+[ext_resource type="Texture2D" uid="uid://dm1i8tm6ujjxn" path="res://assets/sprites/red-cherry.png" id="1_5d4bs"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yybw2"]
+radius = 28.0
+height = 60.0
+
+[node name="red-cherry" type="CollisionShape2D"]
+shape = SubResource("CapsuleShape2D_yybw2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.09, 0.085)
+texture = ExtResource("1_5d4bs")

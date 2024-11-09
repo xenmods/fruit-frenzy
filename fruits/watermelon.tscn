@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://h4rw4tkbrk8r"]
+
+[ext_resource type="Texture2D" uid="uid://cr61gcxib24n0" path="res://assets/sprites/watermelon.png" id="1_tkqwu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mwdq4"]
+size = Vector2(79, 62)
+
+[node name="watermelon" type="CollisionShape2D"]
+position = Vector2(29.5, 21)
+shape = SubResource("RectangleShape2D_mwdq4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.09, 0.085)
+texture = ExtResource("1_tkqwu")

@@ -1,0 +1,27 @@
+[gd_scene load_steps=7 format=3 uid="uid://ynwqm2ccqymp"]
+
+[ext_resource type="PackedScene" uid="uid://c8v2hwjyxj883" path="res://fruits/banana.tscn" id="1_5jxm1"]
+[ext_resource type="Script" path="res://fruit.gd" id="1_ibmm1"]
+[ext_resource type="PackedScene" uid="uid://bhkn1d3fx3yd0" path="res://fruits/lemon.tscn" id="3_8g6hd"]
+[ext_resource type="PackedScene" uid="uid://cmg5trdxthsl2" path="res://fruits/peach.tscn" id="4_1xkgh"]
+[ext_resource type="PackedScene" uid="uid://dfpkh6rsrxssa" path="res://fruits/red-cherry.tscn" id="5_gxeiy"]
+[ext_resource type="PackedScene" uid="uid://h4rw4tkbrk8r" path="res://fruits/watermelon.tscn" id="6_e11ba"]
+
+[node name="Node" type="RigidBody2D" groups=["fruits"]]
+collision_mask = 0
+gravity_scale = 0.3
+script = ExtResource("1_ibmm1")
+
+[node name="banana" parent="." instance=ExtResource("1_5jxm1")]
+
+[node name="lemon" parent="." instance=ExtResource("3_8g6hd")]
+
+[node name="peach" parent="." instance=ExtResource("4_1xkgh")]
+
+[node name="red-cherry" parent="." instance=ExtResource("5_gxeiy")]
+
+[node name="watermelon" parent="." instance=ExtResource("6_e11ba")]
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
